@@ -33,11 +33,11 @@ test = ["pytest>=7.0", "pytest-cov"]
 dev = ["black", "flake8"]
 
 [tool.setuptools.packages.find]
-where = ["src"]
-include = ["*", "*.py"]
+where = ["."]
+include = ["lattice*"]
 
 [tool.setuptools.package-data]
-"*" = ["../data/*"]
+"lattice" = ["data/*"]
 
 [tool.uv]
 managed = true
