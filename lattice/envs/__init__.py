@@ -3,7 +3,7 @@ import gym
 import myosuite
 import numpy as np
 from lattice.definitions import ROOT_DIR  # pylint: disable=import-error
-from myosuite.envs.myo import register_env_with_variants
+from myosuite.envs.myo.myobase import register_env_with_variants
 
 
 myosuite_path = os.path.join(ROOT_DIR, "data", "myosuite")
