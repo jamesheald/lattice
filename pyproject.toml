@@ -1,6 +1,6 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "lattice"
@@ -10,19 +10,34 @@ readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "James Heald", email = "your.email@example.com" }]
 dependencies = [
-    # Same as above
+    #"grpcio==1.47.0",
+    #"grpcio-tools==1.47.0",
+    #"protobuf==3.19.5",
+    #"pyglet==1.5.26",
+    #"numpy==1.21.6",
+    #"mjrl @ git+https://github.com/aravindr93/mjrl.git",
+    #"matplotlib==3.5.3",
+    #"requests==2.25.1",
+    #"scikit-learn==1.0.2",
+    #"sk-video==1.1.10",
+    #"tabulate==0.8.10",
+    #"torch==1.12.1+cu116",
+    #"stable_baselines3==1.6.1",
+    #"sb3-contrib==1.6.0",
+    #"pandas==1.3.5",
+    #"tensorboard==2.10.0",
 ]
 
 [project.optional-dependencies]
 test = ["pytest>=7.0", "pytest-cov"]
 dev = ["black", "flake8"]
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/lattice"]
-include = ["data/*"]
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["*"]  # Include all modules in src/
 
-[tool.hatch.metadata]
-allow-direct-references = true
+[tool.setuptools.package-data]
+"*" = ["../data/*"]
 
 [tool.uv]
 managed = true
