@@ -1,5 +1,6 @@
 import os
-import gym
+#import gym
+import gymnasium as gym
 import myosuite
 import numpy as np
 from lattice.definitions import ROOT_DIR  # pylint: disable=import-error
