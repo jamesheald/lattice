@@ -2,7 +2,7 @@ import os
 import gym
 import myosuite
 import numpy as np
-from definitions import ROOT_DIR  # pylint: disable=import-error
+from lattice.definitions import ROOT_DIR  # pylint: disable=import-error
 from myosuite.envs.myo import register_env_with_variants
 
 
