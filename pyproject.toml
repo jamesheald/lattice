@@ -39,7 +39,8 @@ where = ["."]
 include = ["lattice*"]
 
 [tool.setuptools.package-data]
-"lattice" = ["data/*"]
+"lattice" = ["data/**"]
+
 
 [tool.uv]
 managed = true
