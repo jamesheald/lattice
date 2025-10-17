@@ -8,24 +8,24 @@ version = "0.1.0"
 description = "A Python package for lattice computations"
 readme = "README.md"
 license = { text = "MIT" }
-authors = [{ name = "Your Name", email = "your.email@example.com" }]
+authors = [{ name = "James Heald", email = "your.email@example.com" }]
 dependencies = [
-#    "grpcio==1.47.0",
-#    "grpcio-tools==1.47.0",
-#    "protobuf==3.19.5",
-#    "pyglet==1.5.26",
-#    "numpy==1.21.6",
-#    "mjrl @ git+https://github.com/aravindr93/mjrl.git",
-#    "matplotlib==3.5.3",
-#    "requests==2.25.1",
-#    "scikit-learn==1.0.2",
-#    "sk-video==1.1.10",
-#    "tabulate==0.8.10",
-#    "torch==1.12.1+cu116",
-#    "stable_baselines3==1.6.1",
-#    "sb3-contrib==1.6.0",
-#    "pandas==1.3.5",
-#    "tensorboard==2.10.0",
+   # "grpcio==1.47.0",
+   # "grpcio-tools==1.47.0",
+   # "protobuf==3.19.5",
+   # "pyglet==1.5.26",
+   # "numpy==1.21.6",
+   # "mjrl @ git+https://github.com/aravindr93/mjrl.git",
+   # "matplotlib==3.5.3",
+   # "requests==2.25.1",
+   # "scikit-learn==1.0.2",
+   # "sk-video==1.1.10",
+   # "tabulate==0.8.10",
+   # "torch==1.12.1+cu116",
+   # "stable_baselines3==1.6.1",
+   # "sb3-contrib==1.6.0",
+   # "pandas==1.3.5",
+   # "tensorboard==2.10.0",
 ]
 
 [project.optional-dependencies]
@@ -35,6 +35,9 @@ dev = ["black", "flake8"]
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["lattice*"]
+
+[tool.setuptools.package-data]
+lattice = ["../../data/*"]
 
 [tool.uv]
 managed = true
