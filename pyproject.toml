@@ -34,7 +34,7 @@ dev = ["black", "flake8"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["*"]  # Include all modules in src/
+include = ["*", "*.py"]
 
 [tool.setuptools.package-data]
 "*" = ["../data/*"]
