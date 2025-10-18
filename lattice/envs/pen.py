@@ -3,7 +3,7 @@ import collections
 import numpy as np
 from myosuite.envs.env_base import MujocoEnv
 from myosuite.envs.myo.base_v0 import BaseV0
-from myosuite.envs.myo.pen_v0 import PenTwirlRandomEnvV0
+from myosuite.envs.myo.myobase.pen_v0 import PenTwirlRandomEnvV0
 from myosuite.utils.quat_math import euler2quat
 from myosuite.utils.vector_math import calculate_cosine
 
