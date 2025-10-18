@@ -231,7 +231,7 @@ class CustomReorientEnv(ReorientEnvV0):
         return goal_rot_quat
 
     def step(self, action):
-        obs, reward, done, info = super().step(action)
+        obs, reward, terminated, truncated, info = super().step(action)
         self.pos_dist = np.abs(np.linalg.norm(self.obs_dict["pos_err"], axis=-1))
         self.rot_dist = np.abs(np.linalg.norm(self.obs_dict["rot_err"], axis=-1))
         info.update(info.get("rwd_dict"))
@@ -239,7 +239,7 @@ class CustomReorientEnv(ReorientEnvV0):
         if self.already_reset:
             self.counter += 1
             self.set_die_pos_rot(self.counter)
-        return obs, reward, done, info
+        return obs, reward, terminated, truncated, info
 
     def create_goal_trajectory(self, object_init_pos, object_init_rot):
         traj_len = 1000  # Assumes it is larger than the episode len
