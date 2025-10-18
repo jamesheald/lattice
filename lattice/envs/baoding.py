@@ -136,7 +136,7 @@ class CustomBaodingEnv(BaodingEnvV1):
 
         return qpos
 
-    def reset(self, reset_pose=None, reset_vel=None, reset_goal=None, time_period=None):
+    def reset(self, reset_pose=None, reset_vel=None, reset_goal=None, time_period=None, **kwargs):
         self.which_task = self.sample_task()
         if self.rsi:
             # MODIFICATION: randomize starting target position along the cycle
@@ -289,9 +289,9 @@ class CustomBaodingEnv(BaodingEnvV1):
                 raise ValueError("Unknown task for baoding: ", self.task)
 
     def step(self, action):
-        obs, reward, done, info = super().step(action)
+        obs, reward, terminated, truncated, info = super().step(action)
         info.update(info.get("rwd_dict"))
-        return obs, reward, done, info
+        return obs, reward, terminated, truncated, info
 
 
 class CustomBaodingP2Env(BaodingEnvV1):
