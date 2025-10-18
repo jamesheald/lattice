@@ -198,7 +198,7 @@ class CustomBaodingEnv(BaodingEnvV1):
         if self.rsi or self.noise_palm or self.noise_fingers or self.noise_balls:
             self.set_state(qpos, qvel)
 
-	info = {}
+        info = {}
         return self.get_obs(), info
 
     def _setup(
