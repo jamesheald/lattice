@@ -93,7 +93,7 @@ class CustomPenEnv(PenTwirlRandomEnvV0):
         self.init_qpos[:-6] *= 0  # Use fully open as init pos
         self.init_qpos[0] = -1.5  # place palm up
 
-    def reset(self):
+    def reset(self, **kwargs):
         # randomize target
         desired_orien = np.zeros(3)
         desired_orien[0] = self.np_random.uniform(
@@ -112,7 +112,7 @@ class CustomPenEnv(PenTwirlRandomEnvV0):
             self.sim.model.body_quat[self.obj_bid] = euler2quat(init_orien)
 
         self.robot.sync_sims(self.sim, self.sim_obsd)
-        obs = MujocoEnv.reset(self)
+        obs = MujocoEnv.reset(self, **kwargs)
 
         self.pos_align = np.linalg.norm(self.obs_dict["obj_err_pos"], axis=-1)
         self.rot_align = calculate_cosine(
@@ -122,13 +122,13 @@ class CustomPenEnv(PenTwirlRandomEnvV0):
         return obs
 
     def step(self, a):
-        obs, reward, done, info = super().step(a)
+        obs, reward, terminated, truncated, info = super().step(a)
         self.pos_align = np.linalg.norm(self.obs_dict["obj_err_pos"], axis=-1)
         self.rot_align = calculate_cosine(
             self.obs_dict["obj_rot"], self.obs_dict["obj_des_rot"]
         )
         info.update(info.get("rwd_dict"))
-        return obs, reward, done, info
+        return obs, reward, terminated, truncated, info
 
     def render(self, mode="human"):
         return self.sim.render(mode=mode)
