@@ -139,7 +139,7 @@ class CustomReorientEnv(ReorientEnvV0):
         self.init_qpos[:-7] *= 0  # Use fully open as init pos
         self.init_qpos[0] = -1.5  # Palm up
 
-    def reset(self, reset_qpos=None, reset_qvel=None, seed=None):
+    def reset(self, reset_qpos=None, reset_qvel=None, **kwargs):
 
         # First sample the target position and orientation of the die
         self.episode_goal_pos = self.sample_goal_position()
@@ -195,7 +195,7 @@ class CustomReorientEnv(ReorientEnvV0):
             * (abs(self.object_default_pos) + del_size)
         )
 
-        obs = MujocoEnv.reset(self, reset_qpos, reset_qvel)
+        obs = MujocoEnv.reset(self, reset_qpos, reset_qvel, **kwargs)
         self.pos_dist = np.abs(np.linalg.norm(self.obs_dict["pos_err"], axis=-1))
         self.rot_dist = np.abs(np.linalg.norm(self.obs_dict["rot_err"], axis=-1))
         self.already_reset = True
