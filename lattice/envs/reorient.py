@@ -139,7 +139,7 @@ class CustomReorientEnv(ReorientEnvV0):
         self.init_qpos[:-7] *= 0  # Use fully open as init pos
         self.init_qpos[0] = -1.5  # Palm up
 
-    def reset(self, reset_qpos=None, reset_qvel=None):
+    def reset(self, reset_qpos=None, reset_qvel=None, seed=None):
 
         # First sample the target position and orientation of the die
         self.episode_goal_pos = self.sample_goal_position()
