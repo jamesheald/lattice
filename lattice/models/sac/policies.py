@@ -1,7 +1,7 @@
 from typing import Any, Dict, List, Optional, Type
 import torch
 from torch import nn
-from models.distributions import (
+from lattice.models.distributions import (
     LatticeStateDependentNoiseDistribution,
     SquashedLatticeNoiseDistribution,
 )
